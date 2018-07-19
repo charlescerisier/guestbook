@@ -1,0 +1,52 @@
+<% include header.ejs %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 offset-3">
+
+                <form method="POST" action="/">
+                    <div class="form-group ">
+                        <h3>
+                            <label class="text-primary">Votre Message </label>
+                        </h3>
+                        <textarea name="message" class="form-control" rows='6'></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Envoyer
+                        </button>
+                    </div>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-6 offset-3">
+                <h3>Commentaires : </h3>
+                <% for (message of messages) { %>
+                    <div class="text-muted">
+                        <a class="avatar" href="/comment/<%=message.id%>">
+                            <img src="https://randomuser.me/api/portraits/men/<%=message.id%>.jpg" style="width:30px">
+                        </a>
+                        <%= message.created_at.fromNow() %>
+                    </div>
+
+                    <p>
+                        <%= message.content %>
+                    </p>
+
+                    <% } %>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <% include footer.ejs %>
